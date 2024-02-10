@@ -6,7 +6,7 @@
 </head>
 <body>
     {% if image_to_display %}
-        <img src="{{ url_for('static', filename='images/' + image_to_display) }}" alt="Image to tag" style="max-width: 500px;">
+        <img src="{{ url_for('custom_static', filename=image_to_display) }}" alt="Image to tag" style="max-width: 50%;">
         <form method="post">
             <input type="hidden" name="image_name" value="{{ image_to_display }}">
             <input type="hidden" name="folder" value="{{ url_for('static', filename='images/') }}">
