@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Metadata Input</title>
+</head>
+<body>
+    {% if image_to_display %}
+        <img src="{{ url_for('static', filename='images/' + image_to_display) }}" alt="Image to tag" style="max-width: 500px;">
+        <form method="post">
+            <input type="hidden" name="image_name" value="{{ image_to_display }}">
+            <input type="hidden" name="folder" value="{{ url_for('static', filename='images/') }}">
+            <input type="hidden" name="date" value="{{ current_date }}">
+            <input type="hidden" name="time" value="{{ current_time }}">
+            
+            <label for="plot_name">Plot Name:</label>
+            <input type="text" id="plot_name" name="plot_name" required><br>
+            
+            <label for="subplot_name">Subplot Name:</label>
+            <input type="text" id="subplot_name" name="subplot_name" required><br>
+            
+            <label for="valid">Valid (yes/no):</label>
+            <select id="valid" name="valid">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select><br>
+            
+            <label for="number_of_species">Number of Species:</label>
+            <input type="number" id="number_of_species" name="number_of_species" required><br>
+            
+            <label for="what_species">What Species:</label>
+            <input type="text" id="what_species" name="what_species"><br>
+            
+            <label for="how_many_individuals">How Many Individuals:</label>
+            <input type="number" id="how_many_individuals" name="how_many_individuals"><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+    {% else %}
+        <p>No more images to tag.</p>
+    {% endif %}
+</body>
+</html>
